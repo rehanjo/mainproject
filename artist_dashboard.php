@@ -8,7 +8,8 @@ session_start();
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="bootstrap.min.css" />
+    <script src="jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
     <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"/>
     <link rel="stylesheet" href="style3.css" />
     <title>Admin Dashboard</title>
@@ -16,7 +17,7 @@ session_start();
   <body>
     
     <!-- offcanvas -->
-    <div class="offcanvas offcanvas-start sidebar-nav bg-dark" id="sidebar" style="margin-top:-60px;height:100%;">
+    <div class="offcanvas offcanvas-start sidebar-nav bg-dark" id="sidebar" style="margin-top:-55px;height:760px;float:left">
       <div class="offcanvas-body p-0">
         <nav class="navbar-dark" style="margin-top:32px;">
           <ul class="navbar-nav">
