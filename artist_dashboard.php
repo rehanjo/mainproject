@@ -35,7 +35,7 @@ session_start();
               </a>
             </li>
             <li>
-              <a href="appoint.php" class="nav-link px-3">
+              <a href="artist_bookings.php" class="nav-link px-3">
                 <span class="me-2"><i class="bi bi-graph-up"></i></span>
                 <span>Appointments</span>
               </a>

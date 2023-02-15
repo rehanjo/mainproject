@@ -17,13 +17,20 @@
     <link rel="stylesheet" href="style3.css" />
     <title>customer portal</title>
     <style>
-      main{
-        width:77%;
-      }
       .checked {
         color: orange;
       }
     </style>
+    <script type="text/javascript">
+            var date = new Date();
+            var cYear= date.getFullYear();
+            var cDate = date.getMonth();
+            $(document).ready(function() {
+                $("#date").datepicker{
+                    maxDate : new Date(cYear,cMonth,cDate);
+                }
+            });
+        </script>
   </head>
   <body>
     
@@ -61,15 +68,19 @@
       </div>
     </div>
     <!-- offcanvas -->
-    <main class="mt-5 pt-3">
+    <main class="mt-5 pt-3" style="width:100%;">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-12" style="margin-top:-30px;">
+          <div class="col-md-12" style="margin-top:-30px;;" >
             <h3>ARTIST PORTAL</h3>
           </div>
         </div>
       </div>
+      
       <div class="row" style="margin-top:25px;"><div class="col-md-12 mb-3"><div class="card"></div></div></div>
+      <?php if(isset($_SESSION['message'])) {?>
+          <div class="alert alert-primary" role="alert" style="margin-left:330px;width:630px;"> <?php echo $_SESSION['message'] ?></div>
+      <?php } ?>
       <div class="row row-cols-3 g-3">
       <?php
                 $sql = "SELECT * from tbl_login where lg_role='artist'";
@@ -98,10 +109,17 @@
               Genre : <?php echo $row3['genre']?><br>
               Email : <?php echo $row['lg_email']?><br>
               Contact no: <?php echo $row2['reg_phoneno']?><br>
-              Rating : <?php echo $row3['rating']?>/5 <span class="fa fa-star checked"></span></p>
+              Rating : <?php echo $row3['rating']?>/5 <span class="fa fa-star checked"></span><br>
+              <h6><b><u>Select booking date and time</u></b></h6>
+              <form action="bookartist.php" method="post">
+              <input type="date" name="date" id="date" size="15" min="2023-02-16">
+              <input type="time" name="time" id="time" size="15">
+            </p>
             </p>
             <div class="d-flex justify-content-center mb-2">
-              <button type="button" class="btn btn-primary">Book</button>
+                <input type="hidden" name="artid" value="<?php echo $row2['reg_id']?>">
+                <button type="submit" class="btn btn-primary" name="submit">Book</button>
+              </form>
             </div>
           </div>
         </div>

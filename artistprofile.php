@@ -11,7 +11,8 @@ $id =$_SESSION['LoginId'];
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="bootstrap.min.css" />
+    <script src="jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
     <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style3.css" />
@@ -19,59 +20,59 @@ $id =$_SESSION['LoginId'];
   </head>
   <style>
 
-.form-control:focus {
-    box-shadow: none;
-    border-color: #BA68C8
-}
+            .form-control:focus {
+                box-shadow: none;
+                border-color: #BA68C8
+            }
 
-.profile-button {
-    background: rgb(99, 39, 120);
-    box-shadow: none;
-    border: none
-}
+            .profile-button {
+                background: rgb(99, 39, 120);
+                box-shadow: none;
+                border: none
+            }
 
-.profile-button:hover {
-    background: #682773
-}
+            .profile-button:hover {
+                background: #682773
+            }
 
-.profile-button:focus {
-    background: #682773;
-    box-shadow: none
-}
+            .profile-button:focus {
+                background: #682773;
+                box-shadow: none
+            }
 
-.profile-button:active {
-    background: #682773;
-    box-shadow: none
-}
+            .profile-button:active {
+                background: #682773;
+                box-shadow: none
+            }
 
-.back:hover {
-    color: #682773;
-    cursor: pointer
-}
+            .back:hover {
+                color: #682773;
+                cursor: pointer
+            }
 
-.labels {
-    font-size: 11px
-}
+            .labels {
+                font-size: 11px
+            }
 
-.add-experience:hover {
-    background: #BA68C8;
-    color: #fff;
-    cursor: pointer;
-    border: solid 1px #BA68C8
-}
-.checked {
-  color: orange;
-}
+            .add-experience:hover {
+                background: #BA68C8;
+                color: #fff;
+                cursor: pointer;
+                border: solid 1px #BA68C8
+            }
+            .checked {
+            color: orange;
+            }
   </style>
   <body>
 
-        <!-- offcanvas -->
-        <div class="offcanvas offcanvas-start sidebar-nav bg-dark" id="sidebar" style="margin-top:-60px;height:100%;">
+            <!-- offcanvas -->
+    <div class="offcanvas offcanvas-start sidebar-nav bg-dark" id="sidebar" style="margin-top:-55px;height:760px;float:left">
       <div class="offcanvas-body p-0">
         <nav class="navbar-dark" style="margin-top:32px;">
           <ul class="navbar-nav">
             <li>
-              <a href="artist_dashboard.php" class="nav-link px-3 active">
+              <a href="#" class="nav-link px-3 active">
                 <span class="me-2"><i class="bi bi-speedometer2"></i></span>
                 <span>ARTIST DASHBOARD</span>
               </a>
@@ -84,7 +85,7 @@ $id =$_SESSION['LoginId'];
               </a>
             </li>
             <li>
-              <a href="appoint.php" class="nav-link px-3">
+              <a href="artist_bookings.php" class="nav-link px-3">
                 <span class="me-2"><i class="bi bi-graph-up"></i></span>
                 <span>Appointments</span>
               </a>
@@ -104,6 +105,17 @@ $id =$_SESSION['LoginId'];
       </div>
     </div>
     <!-- offcanvas -->
+            <main class="mt-5 pt-3" style="width:100%;">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12" style="margin-top:-30px;;" >
+            <h3>ARTIST PORTAL</h3>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row" style="margin-top:25px;"><div class="col-md-12 mb-3"><div class="card"></div></div></div>
+      <div id="main">
     <div class="main-view" style="margin-left:400px;margin-top:-60px;">
             <?php
                 $sql = "SELECT * from tbl_login where reg_no=$id";

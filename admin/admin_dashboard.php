@@ -16,61 +16,9 @@
     <title>Admin Dashboard</title>
   </head>
   <body>
-    <!-- top navigation bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container-fluid">
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#sidebar"
-          aria-controls="offcanvasExample"
-        >
-          <span class="navbar-toggler-icon" data-bs-target="#sidebar"></span>
-        </button>
-       
-        <div class="collapse navbar-collapse" id="topNavBar">
-          <form class="d-flex ms-auto my-3 my-lg-0">
-            <div class="input-group">
-              <input
-                class="form-control"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button class="btn btn-primary" type="submit">
-                <i class="bi bi-search"></i>
-              </button>
-            </div>
-          </form>
-          <ul class="navbar-nav">
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle ms-2"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <i class="bi bi-person-fill"></i>
-              </a>
-              <!-- <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><a class="dropdown-item" href="index.html">Log Out</a></li>
-          
-              </ul> -->
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <!-- top navigation bar -->
+
     <!-- offcanvas -->
-    <div
-      class="offcanvas offcanvas-start sidebar-nav bg-dark"
-      tabindex="-1"
-      id="sidebar"
-    >
+    <div class="offcanvas offcanvas-start sidebar-nav bg-dark" id="sidebar" style="margin-top:-55px;height:760px;float:left">
       <div class="offcanvas-body p-0">
         <nav class="navbar-dark">
           <ul class="navbar-nav">
@@ -111,11 +59,19 @@
     <main class="mt-5 pt-3">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-12">
-            <h4>Welcome <?php echo $_SESSION['LoginUser']?></h4>
+          <div class="col-md-12" style="margin-top:-26px;;">
+            <h3>Welcome <?php echo $_SESSION['LoginUser']?></h3>
           </div>
         </div>
+        </div>
         <div class="row">
+          <div class="col-md-12 mb-3">
+            <div class="card">
+             
+          </div>
+        </div>
+      </div>
+      <div class="row">
           <div class="col-md-3 mb-3">
             <div class="card bg-primary text-white h-100">
               <div class="card-body py-5">Total Artist List</div>
@@ -158,14 +114,6 @@
           </div>
         </div>
        
-        </div>
-        <div class="row">
-          <div class="col-md-12 mb-3">
-            <div class="card">
-             
-          </div>
-        </div>
-      </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </body>

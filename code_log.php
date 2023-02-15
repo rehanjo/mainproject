@@ -28,7 +28,7 @@
 			{
 				$_SESSION['LoginUser'] = $name;
 				$_SESSION['LoginId'] = $id;
-				header('Location: admin\admin_dashboard.php');
+				header('Location: admin/admin_dashboard.php');
 			}
 			else if($row["lg_role"] == "customer")
 			{
@@ -40,7 +40,7 @@
 			{
 				$_SESSION['LoginUser'] = $name;
 				$_SESSION['LoginId'] = $id;
-				header('Location: artist_dashboard.php');
+				header('Location: artistprofile.php');
 			}
 			
 		}
