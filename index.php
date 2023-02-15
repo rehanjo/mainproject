@@ -1,6 +1,7 @@
 <?php
 session_start();
-?>
+        include 'google_translater.php'
+    ?>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -76,6 +77,19 @@ session_start();
             }(w, d, 0, "script");
         })(window, document);
     </script>
+	<script type="text/javascript">
+    (function(d, m){
+        var kommunicateSettings = 
+            {"appId":"1ec89385134e5a72c82b7828adb571872","popupWidget":true,"automaticChatOpenOnNavigation":true};
+        var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+        s.src = "kommuni.json";
+        var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+        window.kommunicate = m; m._globals = kommunicateSettings;
+    })(document, window.kommunicate || {});
+/* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
+</script>
+
+</style>
 </head>
 
 <body>
