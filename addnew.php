@@ -109,10 +109,7 @@ if ($conn->query($sql) === TRUE) {
               </a>
             </li>
             <li>
-              <a href="qualification.php" class="nav-link px-3">
-                <span class="me-2"><i class="bi bi-table"></i></span>
-                <span>Qualifications</span>
-              </a>
+              
               <a href="logout.php" class="nav-link px-3">
                 <span class="me-2"><i class="bi bi-table"></i></span>
                 <span>logout</span>
