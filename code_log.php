@@ -8,47 +8,54 @@
 	 $email = $_POST["email"];
 	 $password = md5($_POST["password"]);
      
+	 $secret = "6LdWGMAkAAAAAGTM0TEnAYg0rQwS3r55xbhGAeHQ";
+	 $response = $_POST["g-recaptcha-response"];
+	 $verify = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$secret}&response={$response}");
+	 $captcha_success=json_decode($verify);
 	 
-	$query = "SELECT * FROM tbl_login WHERE lg_email='$email' AND lg_password='$password'";
-	$result = mysqli_query($conn,$query);
-	if(mysqli_num_rows($result)>0)
-	{
-		while($row = mysqli_fetch_assoc($result))
+	 if ($captcha_success->success==true) {
+
+		$query = "SELECT * FROM tbl_login WHERE lg_email='$email' AND lg_password='$password'";
+		$result = mysqli_query($conn,$query);
+		if(mysqli_num_rows($result)>0)
 		{
-			$id = $row["reg_no"];
-			$q2 = "SELECT reg_fullname FROM tbl_registration WHERE reg_id = $id";
-			if($result2 = $conn->query($q2)){ 
-				if($result2->num_rows > 0){ 
-					while($row2 = $result2->fetch_array()){
-						$name =  $row2["reg_fullname"];         
+			while($row = mysqli_fetch_assoc($result))
+			{
+				$id = $row["reg_no"];
+				$q2 = "SELECT reg_fullname FROM tbl_registration WHERE reg_id = $id";
+				if($result2 = $conn->query($q2)){ 
+					if($result2->num_rows > 0){ 
+						while($row2 = $result2->fetch_array()){
+							$name =  $row2["reg_fullname"];         
+						}
 					}
 				}
-			 }
-			if($row["lg_role"] == "admin")
-			{
-				$_SESSION['LoginUser'] = $name;
-				$_SESSION['LoginId'] = $id;
-				header('Location: admin/admin_dashboard.php');
+				if($row["lg_role"] == "admin")
+				{
+					$_SESSION['LoginUser'] = $name;
+					$_SESSION['LoginId'] = $id;
+					header('Location: admin/admin_dashboard.php');
+				}
+				else if($row["lg_role"] == "customer")
+				{
+					$_SESSION['LoginUser'] = $name;
+					$_SESSION['LoginId'] = $id;
+					header('Location: customer_dashboard.php');
+				}
+				else
+				{
+					$_SESSION['LoginUser'] = $name;
+					$_SESSION['LoginId'] = $id;
+					header('Location: artistprofile.php');
+				}
+				
 			}
-			else if($row["lg_role"] == "customer")
-			{
-				$_SESSION['LoginUser'] = $name;
-				$_SESSION['LoginId'] = $id;
-				header('Location: customer_dashboard.php');
-			}
-			else
-			{
-				$_SESSION['LoginUser'] = $name;
-				$_SESSION['LoginId'] = $id;
-				header('Location: artistprofile.php');
-			}
-			
 		}
-	}
-	else
-	{
-		header('Location: lp.php');
-		$_SESSION['error'] = "invalid Details";
+		else
+		{
+			header('Location: lp.php');
+			$_SESSION['error'] = "invalid Details";
+		}
 	}
 	 
  }
