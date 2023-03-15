@@ -3,6 +3,7 @@ include "connection.php";
 session_start();
 $sucessmsg ='';
 $id =$_SESSION['LoginId'];
+include "artistSidebar.php";
 ?>
 
 <!DOCTYPE html>
@@ -66,46 +67,8 @@ $id =$_SESSION['LoginId'];
   </style>
   <body>
 
-            <!-- offcanvas -->
-    <div class="offcanvas offcanvas-start sidebar-nav bg-dark" id="sidebar" style="margin-top:-55px;height:760px;float:left">
-      <div class="offcanvas-body p-0">
-        <nav class="navbar-dark" style="margin-top:32px;">
-          <ul class="navbar-nav">
-            <li>
-              <a href="#" class="nav-link px-3 active">
-                <span class="me-2"><i class="bi bi-speedometer2"></i></span>
-                <span>ARTIST DASHBOARD</span>
-              </a>
-            </li>
-            <li class="my-4"><hr class="dropdown-divider bg-light" /></li>
-            <li>
-              <a href="artistprofile.php" class="nav-link px-3">
-                <span class="me-2"><i class="bi bi-person"></i></span>
-                <span>Profile</span>
-              </a>
-            </li>
-            <li>
-              <a href="artist_bookings.php" class="nav-link px-3">
-                <span class="me-2"><i class="bi bi-graph-up"></i></span>
-                <span>Appointments</span>
-              </a>
-            </li>
-            <li>
-              <a href="qualification.php" class="nav-link px-3">
-                <span class="me-2"><i class="bi bi-table"></i></span>
-                <span>Qualifications</span>
-              </a>
-              <a href="logout.php" class="nav-link px-3">
-                <span class="me-2"><i class="bi bi-table"></i></span>
-                <span>logout</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-    <!-- offcanvas -->
-            <main class="mt-5 pt-3" style="width:100%;">
+
+     <main class="mt-5 pt-3"  style="margin-left:265px;">
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12" style="margin-top:-30px;;" >
@@ -113,10 +76,7 @@ $id =$_SESSION['LoginId'];
           </div>
         </div>
       </div>
-      
-      <div class="row" style="margin-top:25px;"><div class="col-md-12 mb-3"><div class="card"></div></div></div>
-      <div id="main">
-    <div class="main-view" style="margin-left:400px;margin-top:-60px;">
+      <hr>
             <?php
                 $sql = "SELECT * from tbl_login where reg_no=$id";
                 $result = $conn->query($sql);
@@ -133,22 +93,21 @@ $id =$_SESSION['LoginId'];
                     if ($result3->num_rows > 0) {
                     while($row3 = $result3->fetch_assoc()) {
             ?>
-<div class="container rounded bg-white mt-5 mb-5">
     <div class="row">
-        <div class="col-md-3 border-right">
+        <div class="col-md-3 ">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                 <?php if($row3['pro_pic']==NULL){ ?>
-                    <img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
+                    <img width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg">
                     <span class="font-weight-bold">Your rating : <?php echo $row3['rating']?>/5 <span class="fa fa-star checked"></span></span>
                 <?php }else{ ?>
-                    <img class="rounded-circle mt-5" width="150px" src="images/profile/<?php echo $row3['pro_pic']?>">
+                    <img width="150px" src="images/profile/<?php echo $row3['pro_pic']?> " alt="<?php echo $row3['pro_pic']?> ">
                     <span class="font-weight-bold">Your rating : <?php echo $row3['rating']?>/5 <span class="fa fa-star checked"></span></span>
                     <?php
                 }
                 ?>
                 </div>
         </div>
-        <div class="col-md-5 border-right">
+        <div class="col-md-5">
             <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4 class="text-right">Profile Settings</h4>

@@ -26,22 +26,18 @@
               </a>
             </li>
             <li class="my-4"><hr class="dropdown-divider bg-light" /></li>
-            <li>
-              <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
-                Results
-              </div>
-            </li>
+
             </li>
             <li>
-              <a href="#" class="nav-link px-3">
-                <span class="me-2"><i class="bi bi-graph-up"></i></span>
-                <span>Charts</span>
+              <a href="artist_view.php" class="nav-link px-3">
+                <span class="me-2"><i class="bi bi-table"></i></span>
+                <span>Artist List</span>
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link px-3">
+              <a href="user_view.php" class="nav-link px-3">
                 <span class="me-2"><i class="bi bi-table"></i></span>
-                <span>Tables</span>
+                <span>Customer List</span>
               </a>
               <a href="logout.php" class="nav-link px-3">
                 <span class="me-2"><i class="bi bi-table"></i></span>

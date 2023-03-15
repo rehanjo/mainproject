@@ -1,5 +1,8 @@
 <?php
+include "connection.php";
 session_start();
+$id = $_SESSION['LoginId'];
+ include "custSidebar.php";
 ?>
 
 <!DOCTYPE html>
@@ -15,42 +18,7 @@ session_start();
     <title>Admin Dashboard</title>
   </head>
   <body>
-    
-    <!-- offcanvas -->
-    <div
-      class="offcanvas offcanvas-start sidebar-nav bg-dark" id="sidebar" style="margin-top:-55px;height:760px;float:left">
-      <div class="offcanvas-body p-0">
-        <nav class="navbar-dark" style="margin-top:32px;">
-          <ul class="navbar-nav">
-            <li>
-              <a href="customer_dashboard.php" class="nav-link px-3 active">
-                <span class="me-2"><i class="bi bi-speedometer2"></i></span>
-                <span>CUSTOMER DASHBOARD</span>
-              </a>
-            </li>
-            <li class="my-4"><hr class="dropdown-divider bg-light" /></li>
-            <li>
-              <a href="artst_customer_view.php" class="nav-link px-3">
-                <span class="me-2"><i class="bi bi-graph-up"></i></span>
-                <span>Artists</span>
-              </a>
-            </li>
-            <li>
-              <a href="status.php" class="nav-link px-3">
-                <span class="me-2"><i class="bi bi-table"></i></span>
-                <span>Status</span>
-              </a>
-              <a href="logout.php" class="nav-link px-3">
-                <span class="me-2"><i class="bi bi-table"></i></span>
-                <span>logout</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-    <!-- offcanvas -->
-    <main class="mt-5 pt-3">
+    <main class="mt-5 pt-3" style="margin-left:315px;">
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12" style="margin-top:-30px;">

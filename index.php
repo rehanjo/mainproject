@@ -1,11 +1,14 @@
 <?php
 session_start();
-        include 'google_translater.php'
+$msg4 = "";
+        include 'google_translater.php';
+		include 'connection.php';
     ?>
 <!DOCTYPE html>
 <html lang="zxx">
 
 <head>
+
     <title>Musicos</title>
     <meta charset="UTF-8">
     <meta name="description" content="Musicos">
@@ -17,7 +20,7 @@ session_start();
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/bootstrap.min.css+font-awesome.min.css+owl.carousel.min.css+slicknav.min.css+style.css.pagespeed.cc.Caon0wkg6W.css" />
-
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!--[if lt IE 9]>
 		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -88,11 +91,26 @@ session_start();
     })(document, window.kommunicate || {});
 /* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
 </script>
+<style>
 
+
+.feedform button[type=submit] {
+  background: #1acc8d;
+  border: 0;
+  padding: 10px 30px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 50px;
+}
+
+.feedform button[type=submit]:hover {
+  background: #34e5a6;
+}
 </style>
 </head>
 
 <body>
+
 
     <div id="preloder">
         <div class="loader"></div>
@@ -343,7 +361,56 @@ session_start();
             </div>
         </div>
     </section>
+<section class="intro-section spad" id="contact">
+        <div class="container">
 
+          <h2 style="margin-left:34%;">Feedback</h2>
+
+        <div class="row">
+
+          
+<?php 
+if (isset($_POST['feed'])){
+	$name1= mysqli_real_escape_string($conn, $_POST['name']);
+    $feed1= mysqli_real_escape_string($conn, $_POST['subject']);
+	$sql4="INSERT INTO `tbl_feedback`(`id`, `Name`, `text`) VALUES (DEFAULT,'$name1','$feed1')";
+    $result4=$conn->query($sql4);
+	if($result4){
+				     $msg4 = "<div class='alert alert-success'>Your feedback has been recorded successfully</div>";
+					 echo "<script>window.location.href='index.php#contact'</script>";
+	}
+	else{
+		$msg4 = "<div class='alert alert-danger'>Something went wrong</div>";
+		echo "<script>window.location.href='index.php#contact'</script>";
+	}
+}
+?>
+          <div class="col-lg-8 mt-5 mt-lg-0" data-aos="fade-left" data-aos-delay="200">
+
+            <form action="#" method="POST" style="margin-left:50%;" class="feedform">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                </div>
+              
+              </div>
+			    <br>
+              <div class="form-group mt-3">
+                <textarea class="form-control"  name="subject" rows="5" placeholder="Please enter your feedback" required></textarea>
+              </div>
+              <div class="my-3">
+                <?php echo $msg4; ?>
+              </div>
+			  <br>
+             <button  type="submit" name="feed" >Send Feedback</button>
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
 
     <footer class="footer-section">
         <div class="container">

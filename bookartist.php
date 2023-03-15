@@ -13,7 +13,7 @@
         header("location:artst_customer_view.php");
       } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
-      }
+    }
     
  }
 

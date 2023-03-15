@@ -2,10 +2,14 @@
  include "connection.php";
  session_start();
   $id = $_GET['id'];
-  echo $id;
-  $sql = "UPDATE `tbl_bookshows` SET `status`=0 WHERE id='$id'";
+  $stat = $_GET['stat'];
+  $sql = "UPDATE `tbl_bookshows` SET `status`=$stat WHERE id='$id'"; 
 if ($conn->query($sql) === TRUE) {
-  header('Location:artist_bookings.php');
+  if($stat == 0){
+  header('Location:artistprog.php');
+  }else{
+    header('Location:customerprog.php');
+  }
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
