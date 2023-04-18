@@ -140,6 +140,13 @@ include "artistSidebar.php";
                             <div class="col-md-12"><label class="labels">Genre</label><input type="text" id="form-gen" class="form-control" name="gen" placeholder="genre" value="<?php echo $row3['genre'] ?>" onkeyup="check_gen();"></div>
                         <?php 
                             } ?>
+                        <?php if($row3['price']==NULL){?>
+                            <div class="col-md-12"><label class="labels">Rate per 30 Minute</label><input type="text" id="form-gen" class="form-control" name="gen" placeholder="Rate per 30 Minute" value="" onkeyup="check_gen();"></div>
+                        <?php }
+                        else {?>
+                            <div class="col-md-12"><label class="labels">Rate per 30 Minute</label><input type="text" id="form-gen" class="form-control" name="gen" placeholder="Rate per 30 Minute" value="<?php echo $row3['price'] ?>" onkeyup="check_gen();"></div>
+                        <?php 
+                            } ?>
                         <span class="error_form" id="pp_error_message" style="color:red;font-size:small;"></span>
                         <div class="col-md-12"><label class="labels">Change Profile Picture</label><input type="file" name="pp" id="form-pp" class="form-control" onchange="check_pp();">
                 </div>

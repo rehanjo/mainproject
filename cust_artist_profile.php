@@ -66,72 +66,62 @@
                 ?>
                 </table>
                 <h6><b><u>BOOK A SHOW</u></b></h6>
-                <!-- <script>
-                  function gettime(val) {
-                  $.ajax({
-                  type: "POST",
-                  url: "slot.php",
-                  data:'date_id='+val,
-                  success: function(data){
-                  // $("#from-list").html(data);
-                  console.log("Value stored in PHP variable");
-                  }
-                  });
-                  }
-                </script>
-                
-
-                <form name="insert" action="" method="post">
-            DATE : <select onChange="gettime(this.value);"  name="state" id="state" class="form-control" >
-                  
-                  <option value="">Select</option>
-                  <?php 
-                  $sql2 = "SELECT * from tbl_schedule where aid= $id and status=1";
-                  $result2 = $conn->query($sql2);
-                  if ($result2->num_rows > 0) {
-                      while($row2 = $result2->fetch_assoc()) {
-                  ?>
-                  <option value="<?php echo $row2['id'];?>"><?php echo $row2['date'];?></option>
-                  </select>
-                  <?php }}?>
-                  <p>Select a time range from <?php echo $_SESSION['from']?> to <?php echo $_SESSION['to'] ?></p>
-
-                </form> -->
-                <table class="table" id="bookings" style="margin-left:50px;width: 90%;">
-                  
-
-                  <?php
-                  $i=1;
-                              $sql = "SELECT * from tbl_schedule where aid= $id and status=1";
-                              $result2 = $conn->query($sql);
-                              if ($result2->num_rows > 0) {?>
-                              <thead>
+                               <table class="table" id="bookings" style="margin-left:50px;width: 90%;">
+                <thead>
                                 <tr>
                                 <th scope="col">SL.NO</th>
                                 <th scope="col">DATE</th>
                                 <th scope="col">FROM</th>
                                 <th scope="col">TO</th>
+                                <th scope="col">HOURS</th>
+                                <th scope="col">RATE</th>
                                 <th scope="col">VENUE</th>
                                 <th scope="col">BOOK SLOT</th>
                             </tr>
                             </thead>
-                            <?php
+
+                  <?php
+                  $i=1;
+                              $sxql = "SELECT * from tbl_profile where reg_no= $id and status=1";
+                              $resultx = mysqli_query($conn, $sxql);
+                              $rowx = mysqli_fetch_assoc($resultx);
+                              $sql = "SELECT * from tbl_schedule where aid= $id and status=1";
+                              $result2 = $conn->query($sql);
+                              if ($result2->num_rows > 0) {
                                 while($row = $result2->fetch_assoc()) {
                                   $schid =  $row['id'];
+                                  $rate = $rowx['price'];
+                                  $from = $row['time_from'];
+                                  $to = $row['time_to'];
+                                  $time1 = new DateTime($from);
+                                  $time2 = new DateTime($to);
+                                  $interval = $time1->diff($time2);
+                                  $max = $interval->format('%H');
+                                  
                           ?>
                   <tbody>
                   <tr>
                       <td><?php echo $i?></td>
                       <td><?php echo $row['date']?></td>
-                      <td><?php echo $row['time_from']?></td>
-                      <td><?php echo $row['time_to']?></td>
+                      <td><?php echo $from?></td>
+                      <td><?php echo $to?></td>
                       <form action="bookslot.php" method="post">
                       <input type="hidden" name="id" value="<?php echo $schid;?>">
+                      <td><input  type="number" id="hrs" value="1" min="1" max="<?php echo $max;?>" name="hrs" onKeyDown="return false" onchange="updaterate()"></td>
+                      <td><input type="text" id="rate" value="<?php echo $rate;?>" name="rate" style="width:50px;border:none;" readonly></td>
                       <td><textarea rows = "1" cols = "30" name = "address" placeholder="Enter full address"></textarea></td>
                       <td><button type="submit" class="btn btn-success">BOOK</button></td>
                       </form>
                   </tr>
                   </tbody>
+                  <script>
+                      function updaterate(){
+                        var hrs = document.getElementById('hrs').value;
+                        var rate = <?php echo json_encode($rate); ?>;
+                        rate = hrs * rate ;
+                        document.getElementById('rate').value = rate;
+                      }
+                  </script>
                   <?php 
                   $i=$i+1;
                                       }

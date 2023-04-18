@@ -13,7 +13,7 @@
     
     <!-- offcanvas -->
     <div
-      class="offcanvas offcanvas-start sidebar-nav bg-dark" id="sidebar" style="margin-top:-30px;height:780px;float:left;position:fixed;width:300px;">
+      class="offcanvas offcanvas-start sidebar-nav bg-dark" id="sidebar" style="margin-top:-30px;height:780px;float:left;position:fixed;width:230px;">
       <div class="offcanvas-body p-0">
         <nav class="navbar-dark" style="margin-top:32px;">
           <ul class="navbar-nav">

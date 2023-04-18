@@ -63,6 +63,7 @@
             <p class="text-muted mb-1" style="text-align:left;">
               <span style="margin-right:22px;">Position </span>: <?php echo $row3['position']?><br>
               <span style="margin-right:35px;">Genre </span>: <?php echo $row3['genre']?><br>
+              <span style="margin-right:25px;">Rate/hr </span>: <?php echo $row3['price']?><br>
               <span style="margin-right:39px;">Email </span>: <?php echo $row['lg_email']?><br>
               <span style="margin-right:1px;">Contact no </span>: <?php echo $row2['reg_phoneno']?><br>
               <span style="margin-right:32px;">Rating </span>:
